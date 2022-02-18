@@ -20,5 +20,5 @@ function useUser(user: User): void {
   console.log(user);
 }
 
-if (errors) console.log("got errors", JSON.stringify(errors));
+if (errors) console.log(JSON.stringify(errors)); // ["Expecting string at something but instead got: undefined","Expecting string at username but instead got: \"me\" (minimum length 8)"]
 if (values) useUser(values);

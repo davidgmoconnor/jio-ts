@@ -14,6 +14,7 @@ function useUser(user: User): void {
 
 const { errors, values } = validateUser({
   username: "me and my big name",
+  undefinedField: "something",
 });
 
 if (errors) {

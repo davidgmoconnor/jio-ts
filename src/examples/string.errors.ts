@@ -1,4 +1,4 @@
-import { schema, string, validate, toType } from "../";
+import { schema, string, validate, toType } from "..";
 
 const UserSchema = schema({
   username: string().minLength(8),
@@ -10,15 +10,15 @@ type User = toType<typeof UserSchema>;
 
 const validateUser = validate(UserSchema);
 
+function useUser(user: User): void {
+  console.log(user);
+}
+
 const { errors, values } = validateUser({
   username: "me",
   something: undefined,
   optional: undefined,
 });
 
-function useUser(user: User): void {
-  console.log(user);
-}
-
 if (errors) console.log(JSON.stringify(errors)); // ["Expecting string at something but instead got: undefined","Expecting string at username but instead got: \"me\" (minimum length 8)"]
-if (values) useUser(values);
+if (values) useUser(values); // will print blank as values is undefined
